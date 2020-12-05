@@ -11,7 +11,7 @@ public class SudokuFrame {
                 board[i][j] = 9;
             }
         }
-
+    System.out.println("test");   
         
 
     }

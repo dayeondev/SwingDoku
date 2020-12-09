@@ -7,29 +7,30 @@ public class SudokuButton extends JButton implements ActionListener {
 	private SudokuBoard board;
 	private SudokuFrame frame;
 	private int button_num;
-	private int col,row;
+	private int arr_i,arr_j;
 	
-	public SudokuButton(SudokuBoard b, SudokuFrame f, int num, int i, int j) {
-		board = b;
-		frame = f;
-		button_num = num;
-		col = j;
-		row = i;
+	public SudokuButton(SudokuBoard _board, SudokuFrame _frame, int num, int _i, int _j) {
+		board = _board;
+		frame = _frame;
+		button_num = board.getInitBoard()[_i][_j].getValue();
+		arr_i = _i;
+		arr_j = _j;
 		addActionListener(this);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if (getText().equals("")) {
-			String input = JOptionPane.showInputDialog("Select 1~9");
-			if (button_num == Integer.parseInt(input)) {
-				board.getSudokuBoard()[i][j].setvalue(button_num);
-				frame.update();
-				board.fillholes();  //빈칸에 숫자 넣기	
-			}
-		}
+		frame.setSelectedI(arr_i);
+		frame.setSelectedJ(arr_j);
+//		String s = getText();
+//		String input = JOptionPane.showInputDialog("1에서 9 사이의 숫자를 넣어주세요.");
+//		if (button_num == Integer.parseInt(input)) {
+//			board.getProblemBoard()[arr_i][arr_j].setValue(button_num);
+//			frame.update();
+//			JOptionPane.showMessageDialog(null, "정답입니다 :)");
+//		}
+//		else{
+//			JOptionPane.showMessageDialog(null, "다른 숫자를 입력해주세요 :(");
+//		}
 	}
-	
-	public static void main(String[] args) {
-     
-	}
+
 }
